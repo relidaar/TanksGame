@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="35" height="35" tilewidth="20" tileheight="20" infinite="0" nextlayerid="5" nextobjectid="100">
+ <imagelayer id="2" name="Background">
+  <image source="map01.jpg" width="700" height="703"/>
+ </imagelayer>
+ <objectgroup id="4" name="Points">
+  <object id="22" name="Point" x="21.5" y="24" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="23" name="Point" x="104.5" y="24" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="24" name="Point" x="191.5" y="24" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="26" name="Point" x="105.5" y="198" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="27" name="Point" x="20.5" y="195" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="28" name="Point" x="103.5" y="279" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="29" name="Point" x="24.5" y="285" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="30" name="Point" x="17.5" y="369" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="31" name="Point" x="104.5" y="372" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="32" name="Point" x="103.5" y="453" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="33" name="Point" x="24.5" y="453" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="34" name="Point" x="18.5" y="541" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="35" name="Point" x="622.5" y="454" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="36" name="Point" x="456.5" y="460" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="37" name="Point" x="547.5" y="457" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="38" name="Point" x="278.5" y="456" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="39" name="Point" x="450.5" y="629" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="40" name="Point" x="629.5" y="635" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="41" name="Point" x="627.5" y="549" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="42" name="Point" x="548.5" y="545" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="43" name="Point" x="196.5" y="282" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="44" name="Point" x="195.5" y="195" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="45" name="Point" x="279.5" y="195" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="46" name="Point" x="365.5" y="628" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="47" name="Point" x="363.5" y="548" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="48" name="Point" x="450.5" y="544" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="49" name="Point" x="277.5" y="546" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="50" name="Point" x="276.5" y="629" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="51" name="Point" x="193.5" y="628" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="52" name="Point" x="191.5" y="550" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="53" name="Point" x="110.5" y="547" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="54" name="Point" x="108.5" y="630" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="55" name="Point" x="22.5" y="633" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="56" name="Point" x="282.5" y="372" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="57" name="Point" x="190.5" y="372" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="58" name="Point" x="537.5" y="371" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="59" name="Point" x="372.5" y="369" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="60" name="Point" x="368.5" y="283" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="61" name="Point" x="370.5" y="201" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="62" name="Point" x="450.5" y="199" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="63" name="Point" x="539.5" y="198" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="64" name="Point" x="539.5" y="23" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="65" name="Point" x="452.5" y="24" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="66" name="Point" x="452.5" y="114" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="67" name="Point" x="366.5" y="113" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="68" name="Point" x="364.5" y="27" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="69" name="Point" x="283.5" y="110" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="70" name="Point" x="281.5" y="30" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="71" name="Point" x="626.5" y="29" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="72" name="Point" x="623.5" y="285" width="51" height="48">
+   <ellipse/>
+  </object>
+  <object id="73" name="Point" x="453.5" y="284" width="51" height="48">
+   <ellipse/>
+  </object>
+ </objectgroup>
+</map>
