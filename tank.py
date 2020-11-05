@@ -6,7 +6,6 @@ from pygame import Surface
 
 import collisions
 from game_settings import SHELL_COUNT, SHELL_LIFE, EXPLOSION_TIME, IMG_EXPLOSION
-from shell import Shell
 
 
 class Tank:
@@ -78,8 +77,9 @@ class Tank:
         return any(collisions.check_wall_collision(point) for point in points)
 
     def shoot(self):
+        import shell
         if len(self.shells) < SHELL_COUNT:
-            self.shells.append(Shell(self.x, self.y, self.angle))
+            self.shells.append(shell.Shell(self.x, self.y, self.angle))
 
     def check_shells(self):
         now = time.time()

@@ -4,7 +4,9 @@ import time
 import pygame
 from pygame import Surface
 
+from collisions import calculate_distance
 from game_settings import SHELL_RADIUS, TANK_RADIUS, BLACK
+from tank import Tank
 
 
 class Shell:
@@ -42,3 +44,8 @@ class Shell:
 
     def draw(self, target: Surface):
         return pygame.draw.circle(target, BLACK, self.get_location(), SHELL_RADIUS)
+
+    def collides(self, tank: Tank) -> bool:
+        passing_time = time.time() - self.time
+        distance = calculate_distance(tank.get_location(), self.get_location())
+        return passing_time > 0.3 and distance <= SHELL_RADIUS + TANK_RADIUS

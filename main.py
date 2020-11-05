@@ -3,7 +3,7 @@ from enum import Enum, auto
 from pygame.event import Event
 
 import game_settings
-from collisions import check_collision, check_wall_collision
+from collisions import check_wall_collision
 from enemy import Enemy
 from game_settings import *
 from player import Player
@@ -80,7 +80,7 @@ class Game:
                         shooting_tank.pop_shell(shell)
 
             for tank in self.tanks:
-                if check_collision(shell, tank) and tank.alive:
+                if shell.collides(tank) and tank.alive:
                     tank.destroy()
                     for shooting_tank in self.tanks:
                         shooting_tank.pop_shell(shell)

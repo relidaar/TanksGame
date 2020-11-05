@@ -1,5 +1,5 @@
 from tank import Tank
-from game_settings import *
+from game_settings import IMG_TANK1
 
 
 class Enemy(Tank):
