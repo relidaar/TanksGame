@@ -1,7 +1,10 @@
+from enum import Enum, auto
+
 from pygame.event import Event
 
 import game_settings
-from collisions import check_wall_collision, check_collision
+from collisions import check_collision, check_wall_collision
+from enemy import Enemy
 from game_settings import *
 from player import Player
 
@@ -16,8 +19,15 @@ def get_starting_positions(number):
     return positions
 
 
-def reset_map():
+def set_map():
     return pygame.image.load('maps/map0{0}.jpg'.format(str(random.randint(1, NUMBER_OF_MAP))))
+
+
+class GameState(Enum):
+    DEFEAT = auto()
+    VICTORY = auto()
+    DRAW = auto()
+    GAME_ON = auto()
 
 
 class Game:
@@ -28,9 +38,13 @@ class Game:
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
         self.clock = pygame.time.Clock()
 
-        positions = get_starting_positions(2)
-        self.player = Player(positions[0][0], positions[0][1], 0, CONTROL_TANK)
-        self.tank_list = []
+        positions = get_starting_positions(NUMBER_OF_ENEMIES + 1)
+        self.player = Player(CONTROL_TANK, positions[0][0], positions[0][1], MOVEMENT_SPEED, ROTATION_SPEED)
+        self.enemies = [Enemy(positions[i][0], positions[i][1], MOVEMENT_SPEED, ROTATION_SPEED)
+                        for i in range(1, NUMBER_OF_ENEMIES + 1)]
+        self.tanks = []
+
+        self.game_state = GameState.GAME_ON
 
     def process(self, event: Event):
         if event.type == pygame.QUIT:
@@ -38,41 +52,51 @@ class Game:
         self.player.shoot_control(event)
 
     def update(self):
+        if self.game_state != GameState.GAME_ON:
+            return
+
+        if not self.player.alive and all(not e.alive for e in self.enemies):
+            self.game_state = GameState.DRAW
+            return
+
         if not self.player.alive:
-            for tank in self.tank_list:
-                if tank.alive:
-                    tank.score += 1
-                tank.alive = True
-            self.run()
+            self.game_state = GameState.DEFEAT
+            return
+
+        if all(not e.alive for e in self.enemies):
+            self.game_state = GameState.VICTORY
             return
 
         self.player.move_control()
-        ball_list = []
-        for tank in self.tank_list:
-            ball_list += tank.shells
+        shells = []
+        for tank in self.tanks:
+            shells += tank.shells
 
-        for shell in ball_list:
+        for shell in shells:
             shell.move(SHELL_SPEED)
             for point in shell.points.values():
                 if check_wall_collision(point):
-                    for shooting_tank in self.tank_list:
+                    for shooting_tank in self.tanks:
                         shooting_tank.pop_shell(shell)
 
-            for tank in self.tank_list:
+            for tank in self.tanks:
                 if check_collision(shell, tank) and tank.alive:
-                    tank.alive = False
                     tank.destroy()
-                    for shooting_tank in self.tank_list:
+                    for shooting_tank in self.tanks:
                         shooting_tank.pop_shell(shell)
 
     def draw(self):
         self.screen.blit(MAP, (0, 0))
-        for tank in self.tank_list:
+        for tank in self.tanks:
             tank.draw(self.screen)
             for shell in tank.shells:
                 shell.draw(self.screen)
             tank.check_shells()
-        self.draw_score(str(self.player.score))
+        self.draw_text(str(len([e for e in self.enemies if e.alive])), BLACK, 60, (30, 10))
+
+        if self.game_state != GameState.GAME_ON:
+            self.draw_text(self.game_state.name, BLACK, 60, (WIDTH / 2, HEIGHT / 2 - 60))
+
         pygame.display.update()
 
     def draw_text(self, text, color, size, location):
@@ -82,16 +106,12 @@ class Game:
         text_rect.midtop = location
         self.screen.blit(text_surface, text_rect)
 
-    def draw_score(self, score):
-        self.draw_text(score, BLACK, 60, (30, 10))
-
     def run(self):
-        game_settings.MAP = reset_map()
-        positions = get_starting_positions(3)
-        self.player.change_location(positions[0][0], positions[0][1])
-        self.tank_list = [self.player]
+        game_settings.MAP = set_map()
+        self.tanks = [self.player]
+        self.tanks.extend(self.enemies)
 
-        for tank in self.tank_list:
+        for tank in self.tanks:
             tank.reset_shells()
 
         while self.running:
