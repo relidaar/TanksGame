@@ -4,7 +4,7 @@ import time
 import pygame
 from pygame import Surface
 
-from collisions import calculate_distance
+from helpers import calculate_distance
 from game_settings import SHELL_RADIUS, TANK_RADIUS, BLACK
 from tank import Tank
 

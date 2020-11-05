@@ -4,7 +4,7 @@ import time
 import pygame
 from pygame import Surface
 
-import collisions
+import helpers
 from game_settings import SHELL_COUNT, SHELL_LIFE, EXPLOSION_TIME, IMG_EXPLOSION, RELOAD_TIME
 
 
@@ -71,11 +71,11 @@ class Tank:
 
     def _horizontal_collision(self, value):
         points = self.points['right'] if value >= 0 else self.points['left']
-        return any(collisions.check_wall_collision(point) for point in points)
+        return any(helpers.check_wall_collision(point) for point in points)
 
     def _vertical_collision(self, value):
         points = self.points['top'] if value >= 0 else self.points['bottom']
-        return any(collisions.check_wall_collision(point) for point in points)
+        return any(helpers.check_wall_collision(point) for point in points)
 
     def shoot(self):
         import shell

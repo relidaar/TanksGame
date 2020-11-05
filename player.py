@@ -1,14 +1,14 @@
 import keyboard
 import pygame
 
-from game_settings import Controls, IMG_TANK2
+from game_settings import IMG_TANK2, PLAYER_MOVEMENT_SPEED, PLAYER_ROTATION_SPEED, TANK_CONTROLS
 from tank import Tank
 
 
 class Player(Tank):
-    def __init__(self, controls: Controls, x, y, movement_speed, rotation_speed, angle=0):
-        super().__init__(IMG_TANK2, x, y, movement_speed, rotation_speed, angle)
-        self.controls = controls
+    def __init__(self, x, y, angle=0):
+        super().__init__(IMG_TANK2, x, y, PLAYER_MOVEMENT_SPEED, PLAYER_ROTATION_SPEED, angle)
+        self.controls = TANK_CONTROLS
 
     def move_control(self):
         if self.alive:

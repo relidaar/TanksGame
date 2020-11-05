@@ -3,7 +3,7 @@ from enum import Enum, auto
 from pygame.event import Event
 
 import game_settings
-from collisions import check_wall_collision
+from helpers import check_wall_collision
 from enemy import Enemy
 from game_settings import *
 from player import Player
@@ -39,9 +39,8 @@ class Game:
         self.clock = pygame.time.Clock()
 
         positions = get_starting_positions(NUMBER_OF_ENEMIES + 1)
-        self.player = Player(CONTROL_TANK, positions[0][0], positions[0][1], MOVEMENT_SPEED, ROTATION_SPEED)
-        self.enemies = [Enemy(positions[i][0], positions[i][1], MOVEMENT_SPEED, ROTATION_SPEED)
-                        for i in range(1, NUMBER_OF_ENEMIES + 1)]
+        self.player = Player(positions[0][0], positions[0][1])
+        self.enemies = [Enemy(positions[i][0], positions[i][1]) for i in range(1, NUMBER_OF_ENEMIES + 1)]
         self.tanks = []
 
         self.game_state = GameState.GAME_ON
