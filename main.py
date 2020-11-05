@@ -74,7 +74,7 @@ class Game:
             shells += tank.shells
 
         for enemy in self.enemies:
-            if enemy.in_sight(self.player) and enemy.alive:
+            if enemy.in_sight(self.player):
                 enemy.shoot()
 
         for shell in shells:
@@ -86,11 +86,11 @@ class Game:
 
             if shell in self.player.shells:
                 for enemy in self.enemies:
-                    if shell.collides(enemy) and enemy.alive:
+                    if shell.collides(enemy):
                         enemy.destroy()
                         self.player.pop_shell(shell)
             if any(shell in e.shells for e in self.enemies):
-                if shell.collides(self.player) and self.player.alive:
+                if shell.collides(self.player):
                     self.player.destroy()
                     for shooting_tank in self.tanks:
                         shooting_tank.pop_shell(shell)

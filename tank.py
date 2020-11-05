@@ -5,13 +5,14 @@ import pygame
 from pygame import Surface
 
 import helpers
-from game_settings import SHELL_COUNT, SHELL_LIFE, EXPLOSION_TIME, IMG_EXPLOSION, RELOAD_TIME
+from game_settings import SHELL_COUNT, SHELL_LIFE, EXPLOSION_TIME, IMG_EXPLOSION, RELOAD_TIME, TANK_RADIUS
 
 
 class Tank:
     def __init__(self, tank_image, x, y, movement_speed, rotation_speed, angle=0):
-        self.original_image = tank_image
-        self.image = tank_image
+        size = TANK_RADIUS * 2 + 10
+        self.original_image = pygame.transform.scale(tank_image, (size, size))
+        self.image = pygame.transform.scale(tank_image, (size, size))
         self.rect = self.image.get_rect()
         self.x = x
         self.y = y
@@ -26,6 +27,7 @@ class Tank:
         self.alive = True
 
     def rotate(self, degree):
+        if not self.alive: return
         self.angle += degree
         self.angle %= 360
         self.image = pygame.transform.rotate(self.original_image, self.angle)
@@ -33,30 +35,38 @@ class Tank:
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)
 
-    def move(self, value):
+    def _calculate_points(self):
+        values = [
+            TANK_RADIUS - 6, TANK_RADIUS - 2, TANK_RADIUS,
+            int(TANK_RADIUS * 0.7), int(TANK_RADIUS * 0.35), 0
+        ]
         self.points = {
-            'right': [(self.rect.center[0] + 14, self.rect.center[1] - 14),
-                      (self.rect.center[0] + 18, self.rect.center[1] - 7),
-                      (self.rect.center[0] + 20, self.rect.center[1] + 0),
-                      (self.rect.center[0] + 18, self.rect.center[1] + 7),
-                      (self.rect.center[0] + 14, self.rect.center[1] + 14)],
-            'top': [(self.rect.center[0] + 14, self.rect.center[1] + 14),
-                    (self.rect.center[0] + 7, self.rect.center[1] + 18),
-                    (self.rect.center[0] + 0, self.rect.center[1] + 20),
-                    (self.rect.center[0] - 7, self.rect.center[1] + 18),
-                    (self.rect.center[0] - 14, self.rect.center[1] + 14)],
-            'left': [(self.rect.center[0] - 14, self.rect.center[1] + 14),
-                     (self.rect.center[0] - 18, self.rect.center[1] + 7),
-                     (self.rect.center[0] - 20, self.rect.center[1] + 0),
-                     (self.rect.center[0] - 18, self.rect.center[1] - 7),
-                     (self.rect.center[0] - 14, self.rect.center[1] - 14)],
-            'bottom': [(self.rect.center[0] - 14, self.rect.center[1] - 14),
-                       (self.rect.center[0] - 7, self.rect.center[1] - 18),
-                       (self.rect.center[0] - 0, self.rect.center[1] - 20),
-                       (self.rect.center[0] + 7, self.rect.center[1] - 18),
-                       (self.rect.center[0] + 14, self.rect.center[1] - 14)]}
+            'right': [(self.rect.center[0] + values[0], self.rect.center[1] - values[3]),
+                      (self.rect.center[0] + values[1], self.rect.center[1] - values[4]),
+                      (self.rect.center[0] + values[2], self.rect.center[1] + values[5]),
+                      (self.rect.center[0] + values[1], self.rect.center[1] + values[4]),
+                      (self.rect.center[0] + values[2], self.rect.center[1] + values[3])],
+            'top': [(self.rect.center[0] + values[3], self.rect.center[1] + values[0]),
+                    (self.rect.center[0] + values[4], self.rect.center[1] + values[1]),
+                    (self.rect.center[0] + values[5], self.rect.center[1] + values[2]),
+                    (self.rect.center[0] - values[4], self.rect.center[1] + values[1]),
+                    (self.rect.center[0] - values[3], self.rect.center[1] + values[2])],
+            'left': [(self.rect.center[0] - values[0], self.rect.center[1] + values[3]),
+                     (self.rect.center[0] - values[1], self.rect.center[1] + values[4]),
+                     (self.rect.center[0] - values[2], self.rect.center[1] + values[5]),
+                     (self.rect.center[0] - values[1], self.rect.center[1] - values[4]),
+                     (self.rect.center[0] - values[2], self.rect.center[1] - values[3])],
+            'bottom': [(self.rect.center[0] - values[3], self.rect.center[1] - values[0]),
+                       (self.rect.center[0] - values[4], self.rect.center[1] - values[1]),
+                       (self.rect.center[0] - values[5], self.rect.center[1] - values[2]),
+                       (self.rect.center[0] + values[4], self.rect.center[1] - values[1]),
+                       (self.rect.center[0] + values[3], self.rect.center[1] - values[2])]}
 
-        angle_radian = (self.angle * (math.pi / 180))
+    def move(self, value):
+        if not self.alive: return
+        self._calculate_points()
+
+        angle_radian = helpers.to_radians(self.angle)
         horizontal_move = -value * math.cos(angle_radian)
         vertical_move = value * math.sin(angle_radian)
 
@@ -78,6 +88,7 @@ class Tank:
         return any(helpers.check_wall_collision(point) for point in points)
 
     def shoot(self):
+        if not self.alive: return
         import shell
         now = time.time()
         if len(self.shells) < SHELL_COUNT and now - self.last_reload > RELOAD_TIME:
