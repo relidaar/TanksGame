@@ -5,7 +5,7 @@ import pygame
 from pygame import Surface
 
 import collisions
-from game_settings import SHELL_COUNT, SHELL_LIFE, EXPLOSION_TIME, IMG_EXPLOSION
+from game_settings import SHELL_COUNT, SHELL_LIFE, EXPLOSION_TIME, IMG_EXPLOSION, RELOAD_TIME
 
 
 class Tank:
@@ -21,6 +21,7 @@ class Tank:
         self.angle = angle
         self.points = {}
         self.shells = []
+        self.last_reload = 0
         self.death = None
         self.alive = True
 
@@ -78,8 +79,10 @@ class Tank:
 
     def shoot(self):
         import shell
-        if len(self.shells) < SHELL_COUNT:
+        now = time.time()
+        if len(self.shells) < SHELL_COUNT and now - self.last_reload > RELOAD_TIME:
             self.shells.append(shell.Shell(self.x, self.y, self.angle))
+            self.last_reload = now
 
     def check_shells(self):
         now = time.time()

@@ -68,9 +68,15 @@ class Game:
             return
 
         self.player.move_control()
+
         shells = []
         for tank in self.tanks:
+            tank.check_shells()
             shells += tank.shells
+
+        for enemy in self.enemies:
+            if enemy.in_sight(self.player) and enemy.alive:
+                enemy.shoot()
 
         for shell in shells:
             shell.move(SHELL_SPEED)
@@ -79,9 +85,14 @@ class Game:
                     for shooting_tank in self.tanks:
                         shooting_tank.pop_shell(shell)
 
-            for tank in self.tanks:
-                if shell.collides(tank) and tank.alive:
-                    tank.destroy()
+            if shell in self.player.shells:
+                for enemy in self.enemies:
+                    if shell.collides(enemy) and enemy.alive:
+                        enemy.destroy()
+                        self.player.pop_shell(shell)
+            if any(shell in e.shells for e in self.enemies):
+                if shell.collides(self.player) and self.player.alive:
+                    self.player.destroy()
                     for shooting_tank in self.tanks:
                         shooting_tank.pop_shell(shell)
 
@@ -91,7 +102,6 @@ class Game:
             tank.draw(self.screen)
             for shell in tank.shells:
                 shell.draw(self.screen)
-            tank.check_shells()
         self.draw_text(str(len([e for e in self.enemies if e.alive])), BLACK, 60, (30, 10))
 
         if self.game_state != GameState.GAME_ON:
