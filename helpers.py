@@ -24,7 +24,7 @@ def inside_circle(point, center, radius) -> bool:
     return calculate_distance(point, center) < radius
 
 
-def get_angle(point, center) -> bool:
+def get_angle(point, center):
     return math.atan2(point[1] - center[1], point[0] - center[0])
 
 
