@@ -1,7 +1,8 @@
+import random
 from enum import Enum, auto
 
-import pytmx as pytmx
 from pygame.event import Event
+from pytmx import load_pygame
 
 from enemy import Enemy
 from game_settings import *
@@ -28,7 +29,6 @@ class Game:
         self.enemies = []
         self.tanks = []
         self.map = None
-        self.map_image = None
 
         self.game_state = GameState.GAME_ON
 
@@ -43,9 +43,8 @@ class Game:
         return positions
 
     def set_map(self):
-        number = random.randint(1, NUMBER_OF_MAP)
-        self.map = pytmx.TiledMap('maps/map{0}.tmx'.format(str(number)))
-        self.map_image = pygame.image.load('maps/map0{0}.jpg'.format(str(number)))
+        number = random.randint(1, NUMBER_OF_MAPS)
+        self.map = load_pygame('maps/map{0}.tmx'.format(str(number)))
 
     def process(self, event: Event):
         if event.type == pygame.QUIT:
@@ -82,7 +81,7 @@ class Game:
         for shell in shells:
             shell.move(SHELL_SPEED)
             for point in shell.points.values():
-                if check_wall_collision(point, self.map_image):
+                if check_wall_collision(point, self.map):
                     for shooting_tank in self.tanks:
                         shooting_tank.pop_shell(shell)
 
@@ -98,17 +97,22 @@ class Game:
                         shooting_tank.pop_shell(shell)
 
     def draw(self):
-        self.screen.blit(self.map_image, (0, 0))
+        self.draw_map()
         for tank in self.tanks:
             tank.draw(self.screen)
             for shell in tank.shells:
                 shell.draw(self.screen)
-        self.draw_text(str(len([e for e in self.enemies if e.alive])), BLACK, 60, (30, 10))
+        self.draw_text(str(len([e for e in self.enemies if e.alive])), WHITE, 60, (15, 10))
 
         if self.game_state != GameState.GAME_ON:
             self.draw_text(self.game_state.name, BLACK, 60, (WIDTH / 2, HEIGHT / 2 - 60))
 
         pygame.display.update()
+
+    def draw_map(self):
+        for layer in [layer for layer in self.map.layers if layer.Type == 'Tiles']:
+            for x, y, tile in layer.tiles():
+                self.screen.blit(tile, (x * TILE_SIZE, y * TILE_SIZE))
 
     def draw_text(self, text, color, size, location):
         font = pygame.font.Font('freesansbold.ttf', size)
@@ -121,8 +125,8 @@ class Game:
         self.set_map()
 
         positions = self.get_starting_positions(NUMBER_OF_ENEMIES + 1)
-        self.player = Player(self.map_image, positions[0][0], positions[0][1], positions[0][2])
-        self.enemies = [Enemy(self.map_image, positions[i][0], positions[i][1], positions[i][2])
+        self.player = Player(self.map, positions[0][0], positions[0][1], positions[0][2])
+        self.enemies = [Enemy(self.map, positions[i][0], positions[i][1], positions[i][2])
                         for i in range(1, NUMBER_OF_ENEMIES + 1)]
 
         self.tanks = [self.player]
