@@ -29,7 +29,7 @@ def inside_square(point, x, y, width, height):
 
 
 def get_angle(point, center):
-    return math.atan2(point[1] - center[1], point[0] - center[0])
+    return to_degrees(math.atan2(point[1] - center[1], point[0] - center[0])) % 360
 
 
 def invert(coordinates, invert_y: bool = True, invert_x: bool = False):
@@ -38,8 +38,34 @@ def invert(coordinates, invert_y: bool = True, invert_x: bool = False):
     return x, y
 
 
+def four_neighbors(width, height, row, col):
+    ans = []
+    if row > 0:
+        ans.append((row - 1, col))
+    if row < height - 1:
+        ans.append((row + 1, col))
+    if col > 0:
+        ans.append((row, col - 1))
+    if col < width - 1:
+        ans.append((row, col + 1))
+    return ans
+
+
+def eight_neighbors(width, height, row, col):
+    ans = four_neighbors(width, height, row, col)
+    if (row > 0) and (col > 0):
+        ans.append((row - 1, col - 1))
+    if (row > 0) and (col < width - 1):
+        ans.append((row - 1, col + 1))
+    if (row < height - 1) and (col > 0):
+        ans.append((row + 1, col - 1))
+    if (row < height - 1) and (col < width - 1):
+        ans.append((row + 1, col + 1))
+    return ans
+
+
 def inside_sector(point, center, radius, starting, ending) -> bool:
-    angle = to_degrees(math.atan2(point[1] - center[1], point[0] - center[0])) % 360
+    angle = get_angle(point, center)
     first_case = starting < ending and starting < angle < ending
     second_case = starting > ending and (angle > starting or angle < ending)
     return inside_circle(point, center, radius) and (first_case or second_case)
