@@ -1,4 +1,3 @@
-import math
 import random
 
 import pygame
@@ -6,20 +5,6 @@ import pygame
 NUMBER_OF_MAP = 3
 NUMBER_OF_POSITIONS = 13
 MAP_NUMBER = random.randint(1, NUMBER_OF_MAP)
-MAP = pygame.image.load('maps/map0{0}.jpg'.format(str(MAP_NUMBER)))
-TANK_POSSIBLE_POSITIONS = ((50, 50),
-                           (650, 650),
-                           (650, 50),
-                           (45, 565),
-                           (650, 480),
-                           (390, 125),
-                           (225, 390),
-                           (125, 395),
-                           (480, 220),
-                           (300, 650),
-                           (560, 395),
-                           (210, 45),
-                           (45, 315))
 
 IMG_TANK1 = pygame.image.load('img/tank1.png')
 IMG_TANK2 = pygame.image.load('img/tank2.png')

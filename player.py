@@ -6,8 +6,8 @@ from tank import Tank
 
 
 class Player(Tank):
-    def __init__(self, x, y, angle=0):
-        super().__init__(IMG_TANK2, x, y, PLAYER_MOVEMENT_SPEED, PLAYER_ROTATION_SPEED, angle)
+    def __init__(self, game_map, x, y, angle=0):
+        super().__init__(game_map, IMG_TANK2, x, y, PLAYER_MOVEMENT_SPEED, PLAYER_ROTATION_SPEED, angle)
         self.controls = TANK_CONTROLS
 
     def move_control(self):

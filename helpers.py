@@ -4,8 +4,8 @@ from math import sqrt
 from game_settings import HEIGHT, WIDTH
 
 
-def check_wall_collision(point) -> bool:
-    return 85 > MAP.get_at(point)[0] > 70
+def check_wall_collision(point, game_map) -> bool:
+    return 85 > game_map.get_at(point)[0] > 70
 
 
 def to_radians(value):

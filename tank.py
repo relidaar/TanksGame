@@ -9,20 +9,26 @@ from game_settings import SHELL_COUNT, SHELL_LIFE, EXPLOSION_TIME, IMG_EXPLOSION
 
 
 class Tank:
-    def __init__(self, tank_image, x, y, movement_speed, rotation_speed, angle=0):
-        size = TANK_RADIUS * 2 + 10
-        self.original_image = pygame.transform.scale(tank_image, (size, size))
-        self.image = pygame.transform.scale(tank_image, (size, size))
+    def __init__(self, game_map, tank_image: Surface, x, y, movement_speed, rotation_speed, angle=0):
+        self.game_map = game_map
+
+        self.size = TANK_RADIUS * 2 + 10
+        self.original_image = pygame.transform.rotate(pygame.transform.scale(tank_image, (self.size, self.size)), 180)
+        self.image = pygame.transform.rotate(self.original_image, angle % 360)
         self.rect = self.image.get_rect()
+
         self.x = x
         self.y = y
         self.rect.center = self.get_location()
+
         self.movement_speed = movement_speed
         self.rotation_speed = rotation_speed
         self.angle = angle
+
         self.points = {}
         self.shells = []
         self.last_reload = 0
+
         self.death = None
         self.alive = True
 
@@ -81,11 +87,11 @@ class Tank:
 
     def _horizontal_collision(self, value):
         points = self.points['right'] if value >= 0 else self.points['left']
-        return any(helpers.check_wall_collision(point) for point in points)
+        return any(helpers.check_wall_collision(point, self.game_map) for point in points)
 
     def _vertical_collision(self, value):
         points = self.points['top'] if value >= 0 else self.points['bottom']
-        return any(helpers.check_wall_collision(point) for point in points)
+        return any(helpers.check_wall_collision(point, self.game_map) for point in points)
 
     def shoot(self):
         if not self.alive: return

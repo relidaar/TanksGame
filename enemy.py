@@ -5,8 +5,8 @@ from game_settings import IMG_TANK1, ENEMY_MOVEMENT_SPEED, ENEMY_ROTATION_SPEED,
 
 
 class Enemy(Tank):
-    def __init__(self, x, y, angle=0):
-        super().__init__(IMG_TANK1, x, y, ENEMY_MOVEMENT_SPEED, ENEMY_ROTATION_SPEED, angle)
+    def __init__(self, game_map, x, y, angle=0):
+        super().__init__(game_map, IMG_TANK1, x, y, ENEMY_MOVEMENT_SPEED, ENEMY_ROTATION_SPEED, angle)
 
     def in_sight(self, player: Player) -> bool:
         if not player.alive: return False

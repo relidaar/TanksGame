@@ -1,26 +1,12 @@
 from enum import Enum, auto
 
+import pytmx as pytmx
 from pygame.event import Event
 
-import game_settings
-from helpers import check_wall_collision
 from enemy import Enemy
 from game_settings import *
+from helpers import check_wall_collision
 from player import Player
-
-
-def get_starting_positions(number):
-    positions = []
-    map_positions = list(TANK_POSSIBLE_POSITIONS)
-    for _ in range(number):
-        el = random.choice(map_positions)
-        positions.append(el)
-        map_positions.remove(el)
-    return positions
-
-
-def set_map():
-    return pygame.image.load('maps/map0{0}.jpg'.format(str(random.randint(1, NUMBER_OF_MAP))))
 
 
 class GameState(Enum):
@@ -38,12 +24,28 @@ class Game:
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
         self.clock = pygame.time.Clock()
 
-        positions = get_starting_positions(NUMBER_OF_ENEMIES + 1)
-        self.player = Player(positions[0][0], positions[0][1])
-        self.enemies = [Enemy(positions[i][0], positions[i][1]) for i in range(1, NUMBER_OF_ENEMIES + 1)]
+        self.player = None
+        self.enemies = []
         self.tanks = []
+        self.map = None
+        self.map_image = None
 
         self.game_state = GameState.GAME_ON
+
+    def get_starting_positions(self, number):
+        positions = []
+        points = self.map.get_layer_by_name('Positions')
+        map_positions = [(point.x + point.width / 2, point.y + point.height / 2, point.angle) for point in points]
+        for _ in range(number):
+            el = random.choice(map_positions)
+            positions.append(el)
+            map_positions.remove(el)
+        return positions
+
+    def set_map(self):
+        number = random.randint(1, NUMBER_OF_MAP)
+        self.map = pytmx.TiledMap('maps/map{0}.tmx'.format(str(number)))
+        self.map_image = pygame.image.load('maps/map0{0}.jpg'.format(str(number)))
 
     def process(self, event: Event):
         if event.type == pygame.QUIT:
@@ -80,7 +82,7 @@ class Game:
         for shell in shells:
             shell.move(SHELL_SPEED)
             for point in shell.points.values():
-                if check_wall_collision(point):
+                if check_wall_collision(point, self.map_image):
                     for shooting_tank in self.tanks:
                         shooting_tank.pop_shell(shell)
 
@@ -96,7 +98,7 @@ class Game:
                         shooting_tank.pop_shell(shell)
 
     def draw(self):
-        self.screen.blit(MAP, (0, 0))
+        self.screen.blit(self.map_image, (0, 0))
         for tank in self.tanks:
             tank.draw(self.screen)
             for shell in tank.shells:
@@ -116,7 +118,13 @@ class Game:
         self.screen.blit(text_surface, text_rect)
 
     def run(self):
-        game_settings.MAP = set_map()
+        self.set_map()
+
+        positions = self.get_starting_positions(NUMBER_OF_ENEMIES + 1)
+        self.player = Player(self.map_image, positions[0][0], positions[0][1], positions[0][2])
+        self.enemies = [Enemy(self.map_image, positions[i][0], positions[i][1], positions[i][2])
+                        for i in range(1, NUMBER_OF_ENEMIES + 1)]
+
         self.tanks = [self.player]
         self.tanks.extend(self.enemies)
 
