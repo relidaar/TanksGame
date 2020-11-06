@@ -29,17 +29,18 @@ class Game:
         self.enemies = []
         self.tanks = []
         self.map = None
+        self.tiles = dict()
+        self.coords = dict()
 
         self.game_state = GameState.GAME_ON
 
     def get_starting_positions(self, number):
         positions = []
-        points = self.map.get_layer_by_name('Positions')
-        map_positions = [(point.x, point.y, point.angle) for point in points]
-        for _ in range(number):
-            el = random.choice(map_positions)
-            positions.append(el)
-            map_positions.remove(el)
+        points = list(self.tiles.values())
+        for _ in range(number + 1):
+            el = random.choice(points)
+            if el not in positions:
+                positions.append(el)
         return positions
 
     def set_map(self):
@@ -75,6 +76,8 @@ class Game:
             shells += tank.shells
 
         for enemy in self.enemies:
+            enemy.rotate()
+            enemy.move()
             if enemy.in_sight(self.player):
                 enemy.shoot()
 
@@ -123,10 +126,16 @@ class Game:
 
     def run(self):
         self.set_map()
+        self.tiles = dict()
+        self.coords = dict()
+        for row, col, _ in self.map.get_layer_by_name('Path').tiles():
+            pos = (row * TILE_SIZE + TILE_SIZE / 2, col * TILE_SIZE + TILE_SIZE / 2)
+            self.tiles[(row, col)] = pos
+            self.coords[pos] = (row, col)
 
         positions = self.get_starting_positions(NUMBER_OF_ENEMIES + 1)
-        self.player = Player(self.map, positions[0][0], positions[0][1], positions[0][2])
-        self.enemies = [Enemy(self.map, positions[i][0], positions[i][1], positions[i][2])
+        self.player = Player(self.map, positions[0][0], positions[0][1])
+        self.enemies = [Enemy(self.map, self.tiles, self.coords, positions[i][0], positions[i][1])
                         for i in range(1, NUMBER_OF_ENEMIES + 1)]
 
         self.tanks = [self.player]
