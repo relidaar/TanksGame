@@ -1,7 +1,7 @@
 import math
 from math import sqrt
 
-from game_settings import MAP
+from game_settings import HEIGHT, WIDTH
 
 
 def check_wall_collision(point) -> bool:
@@ -28,8 +28,14 @@ def get_angle(point, center):
     return math.atan2(point[1] - center[1], point[0] - center[0])
 
 
+def invert(coordinates, invert_y: bool = True, invert_x: bool = False):
+    x = (WIDTH - coordinates[0]) % WIDTH if invert_x else coordinates[0]
+    y = (HEIGHT - coordinates[1]) % HEIGHT if invert_y else coordinates[1]
+    return x, y
+
+
 def inside_sector(point, center, radius, starting, ending) -> bool:
-    angle = to_degrees(get_angle(point, center))
+    angle = to_degrees(math.atan2(point[1] - center[1], point[0] - center[0])) % 360
     first_case = starting < ending and starting < angle < ending
     second_case = starting > ending and (angle > starting or angle < ending)
     return inside_circle(point, center, radius) and (first_case or second_case)

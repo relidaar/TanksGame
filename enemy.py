@@ -1,4 +1,4 @@
-from helpers import inside_sector
+from helpers import inside_sector, invert
 from player import Player
 from tank import Tank
 from game_settings import IMG_TANK1, ENEMY_MOVEMENT_SPEED, ENEMY_ROTATION_SPEED, ENEMY_FOV_DISTANCE, ENEMY_FOV
@@ -10,7 +10,9 @@ class Enemy(Tank):
 
     def in_sight(self, player: Player) -> bool:
         if not player.alive: return False
-        starting = (self.angle - 180 - ENEMY_FOV / 2) % 360
-        ending = (self.angle - 180 + ENEMY_FOV / 2) % 360
-        return inside_sector(player.get_location(), self.get_location(), ENEMY_FOV_DISTANCE, starting, ending)
+        start_angle = (self.angle - ENEMY_FOV / 2) % 360
+        end_angle = (self.angle + ENEMY_FOV / 2) % 360
+        point = invert(player.get_location())
+        center = invert(self.get_location())
+        return inside_sector(point, center, ENEMY_FOV_DISTANCE, start_angle, end_angle)
 

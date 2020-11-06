@@ -67,8 +67,8 @@ class Tank:
         self._calculate_points()
 
         angle_radian = helpers.to_radians(self.angle)
-        horizontal_move = -value * math.cos(angle_radian)
-        vertical_move = value * math.sin(angle_radian)
+        horizontal_move = value * math.cos(angle_radian)
+        vertical_move = -value * math.sin(angle_radian)
 
         if self._horizontal_collision(horizontal_move):
             horizontal_move = 0
