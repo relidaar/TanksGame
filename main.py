@@ -27,6 +27,7 @@ class Game:
 
         self.player = None
         self.enemies = []
+        self.enemies_left = NUMBER_OF_ENEMIES
         self.tanks = []
         self.map = None
         self.tiles = dict()
@@ -92,6 +93,7 @@ class Game:
                 for enemy in self.enemies:
                     if shell.collides(enemy):
                         enemy.destroy()
+                        self.enemies_left -= 1
                         self.player.pop_shell(shell)
             if any(shell in e.shells for e in self.enemies):
                 if shell.collides(self.player):
@@ -105,10 +107,10 @@ class Game:
             tank.draw(self.screen)
             for shell in tank.shells:
                 shell.draw(self.screen)
-        self.draw_text(str(len([e for e in self.enemies if e.alive])), WHITE, 60, (15, 10))
+        self.draw_text('Enemies left: ' + str(self.enemies_left), WHITE, 30, (140, 40))
 
         if self.game_state != GameState.GAME_ON:
-            self.draw_text(self.game_state.name, BLACK, 60, (WIDTH / 2, HEIGHT / 2 - 60))
+            self.draw_text(self.game_state.name, WHITE, 30, (WIDTH - 90, 40))
 
         pygame.display.update()
 
