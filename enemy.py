@@ -1,7 +1,8 @@
 import random
 from math import ceil, floor
 
-from game_settings import IMG_TANK1, ENEMY_MOVEMENT_SPEED, ENEMY_ROTATION_SPEED, ENEMY_FOV_DISTANCE, ENEMY_FOV, TILES
+from game_settings import IMG_TANK1, ENEMY_MOVEMENT_SPEED, ENEMY_ROTATION_SPEED, ENEMY_FOV_DISTANCE, ENEMY_FOV, TILES_X, \
+    TILES_Y
 from helpers import inside_sector, invert, get_angle, four_neighbors
 from player import Player
 from tank import Tank
@@ -54,7 +55,7 @@ class Enemy(Tank):
         return floor(coords[0]) <= self.x <= ceil(coords[0]) and floor(coords[1]) <= self.y <= ceil(coords[1])
 
     def _get_next_tile(self):
-        tiles = four_neighbors(TILES, TILES, self.current[0], self.current[1])
+        tiles = four_neighbors(TILES_X, TILES_Y, self.current[0], self.current[1])
         tiles = [tile for tile in tiles if tile in self.tiles.keys()]
         tiles = [tile for tile in tiles if tile != self.previous] if len(tiles) > 1 else tiles
         next_tile = random.choice(tiles)
