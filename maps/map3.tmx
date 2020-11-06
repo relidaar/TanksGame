@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="35" height="35" tilewidth="20" tileheight="20" infinite="0" nextlayerid="4" nextobjectid="50">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="35" height="35" tilewidth="20" tileheight="20" infinite="0" nextlayerid="5" nextobjectid="99">
  <imagelayer id="2" name="Background">
   <image source="map03.jpg" width="700" height="703"/>
  </imagelayer>
- <objectgroup id="3" name="Points">
+ <objectgroup id="3" name="Points" visible="0">
   <object id="1" name="Point" x="19.4183" y="193.241" width="51" height="48">
    <ellipse/>
   </object>
@@ -149,6 +149,86 @@
    <ellipse/>
   </object>
   <object id="49" name="Point" x="20.235" y="630.991" width="51" height="48">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup id="4" name="Positions">
+  <object id="50" name="Position" x="19.4183" y="193.241" width="51" height="48">
+   <properties>
+    <property name="angle" type="int" value="90"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="53" name="Position" x="187.108" y="25.8185" width="51" height="48">
+   <properties>
+    <property name="angle" type="int" value="180"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="61" name="Position" x="276.678" y="23.3684" width="51" height="48">
+   <properties>
+    <property name="angle" type="int" value="270"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="69" name="Position" x="451.451" y="110.755" width="51" height="48">
+   <properties>
+    <property name="angle" type="int" value="90"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="71" name="Position" x="539.654" y="282.261" width="51" height="48">
+   <properties>
+    <property name="angle" type="int" value="180"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="73" name="Position" x="628.674" y="32.3521" width="51" height="48">
+   <properties>
+    <property name="angle" type="int" value="270"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="75" name="Position" x="629.674" y="374.114" width="51" height="48">
+   <properties>
+    <property name="angle" type="int" value="180"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="79" name="Position" x="197.458" y="372.098" width="51" height="48">
+   <properties>
+    <property name="angle" type="int" value="90"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="83" name="Position" x="628.674" y="550.955" width="51" height="48">
+   <properties>
+    <property name="angle" type="int" value="270"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="88" name="Position" x="369.781" y="630.174" width="51" height="48">
+   <properties>
+    <property name="angle" type="int" value="90"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="92" name="Position" x="193.888" y="632.174" width="51" height="48">
+   <properties>
+    <property name="angle" type="int" value="90"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="96" name="Position" x="19.4183" y="375.365" width="51" height="48">
+   <properties>
+    <property name="angle" type="int" value="0"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="98" name="Position" x="20.235" y="630.991" width="51" height="48">
+   <properties>
+    <property name="angle" type="int" value="90"/>
+   </properties>
    <ellipse/>
   </object>
  </objectgroup>
