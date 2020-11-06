@@ -1,58 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="70" height="70" tilewidth="10" tileheight="10" infinite="0" nextlayerid="6" nextobjectid="112">
- <imagelayer id="2" name="Background">
-  <image source="map03.jpg" width="700" height="703"/>
- </imagelayer>
- <objectgroup id="4" name="Positions" visible="0">
-  <object id="99" name="Point" type="Point" x="310" y="60">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="22" height="22" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="112">
+ <tileset firstgid="1" source="Tiles.tsx"/>
+ <layer id="6" name="Borders" width="22" height="22" locked="1">
+  <properties>
+   <property name="Type" value="Tiles"/>
+  </properties>
+  <data encoding="csv">
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,1,
+1,0,1,0,0,1,1,1,1,0,0,1,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,1,0,1,0,0,1,
+1,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,1,0,1,0,0,1,
+1,0,1,0,0,1,0,0,0,0,1,1,1,1,1,1,1,0,1,0,0,1,
+1,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,1,
+1,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,1,
+1,1,1,0,0,1,0,0,1,1,1,0,0,1,0,0,0,0,1,0,0,1,
+1,0,0,0,0,0,0,0,1,1,1,0,0,1,0,0,0,0,1,0,0,1,
+1,0,0,0,0,0,0,0,1,1,1,0,0,1,1,1,1,1,1,0,0,1,
+1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,1,1,0,0,1,1,1,1,0,0,1,1,1,0,0,1,1,1,1,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,1,0,0,1,0,0,1,1,1,1,1,1,0,0,1,1,1,1,1,1,
+1,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,1,
+1,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,1,
+1,0,1,0,0,1,0,0,1,0,1,0,0,1,0,0,1,1,1,1,0,1,
+1,0,1,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+</data>
+ </layer>
+ <layer id="7" name="Path" width="22" height="22" locked="1">
+  <properties>
+   <property name="Type" value="Tiles"/>
+  </properties>
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,2,0,2,2,2,2,2,0,2,2,0,2,2,2,2,2,2,2,2,2,0,
+0,2,0,2,2,0,0,0,0,2,2,0,2,2,2,2,2,2,2,2,2,0,
+0,2,2,2,2,0,2,2,2,2,2,2,2,0,2,2,0,2,0,2,2,0,
+0,2,2,2,2,0,2,2,2,2,2,2,2,0,2,2,0,2,0,2,2,0,
+0,2,0,2,2,0,2,2,2,2,0,0,0,0,0,0,0,2,0,2,2,0,
+0,2,0,2,2,0,2,2,2,2,2,2,2,2,2,2,0,2,0,2,2,0,
+0,2,0,2,2,0,2,2,2,2,2,2,2,2,2,2,0,2,0,2,2,0,
+0,0,0,2,2,0,2,2,0,0,0,2,2,0,2,2,2,2,0,2,2,0,
+0,2,2,2,2,2,2,2,0,0,0,2,2,0,2,2,2,2,0,2,2,0,
+0,2,2,2,2,2,2,2,0,0,0,2,2,0,0,0,0,0,0,2,2,0,
+0,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,
+0,2,2,2,2,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,
+0,0,0,2,2,0,0,0,0,2,2,0,0,0,2,2,0,0,0,0,2,0,
+0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,
+0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,
+0,2,0,2,2,0,2,2,0,0,0,0,0,0,2,2,0,0,0,0,0,0,
+0,2,0,2,2,0,2,2,0,2,2,2,2,2,2,2,2,2,2,0,2,0,
+0,2,0,2,2,0,2,2,0,2,2,2,2,2,2,2,2,2,2,0,2,0,
+0,2,0,2,2,0,2,2,0,2,0,2,2,0,2,2,0,0,0,0,2,0,
+0,2,0,2,2,2,2,2,2,2,0,2,2,0,2,2,2,2,2,2,2,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="4" name="Positions" locked="1">
+  <properties>
+   <property name="Type" value="Objects"/>
+  </properties>
+  <object id="99" name="Point" type="Point" x="304" y="48">
    <properties>
     <property name="angle" type="int" value="270"/>
    </properties>
    <point/>
   </object>
-  <object id="100" name="Point" type="Point" x="650" y="50">
+  <object id="100" name="Point" type="Point" x="656" y="48">
    <properties>
     <property name="angle" type="int" value="270"/>
    </properties>
    <point/>
   </object>
-  <object id="101" name="Point" type="Point" x="650" y="580">
+  <object id="101" name="Point" type="Point" x="656" y="560">
    <properties>
     <property name="angle" type="int" value="270"/>
    </properties>
    <point/>
   </object>
-  <object id="102" name="Point" type="Point" x="40" y="210">
+  <object id="102" name="Point" type="Point" x="48" y="208">
    <properties>
     <property name="angle" type="int" value="90"/>
    </properties>
    <point/>
   </object>
-  <object id="103" name="Point" type="Point" x="220" y="400">
+  <object id="103" name="Point" type="Point" x="208" y="400">
    <properties>
     <property name="angle" type="int" value="90"/>
    </properties>
    <point/>
   </object>
-  <object id="104" name="Point" type="Point" x="390" y="650">
+  <object id="104" name="Point" type="Point" x="368" y="656">
    <properties>
     <property name="angle" type="int" value="90"/>
    </properties>
    <point/>
   </object>
-  <object id="105" name="Point" type="Point" x="220" y="660">
+  <object id="105" name="Point" type="Point" x="208" y="656">
    <properties>
     <property name="angle" type="int" value="90"/>
    </properties>
    <point/>
   </object>
-  <object id="106" name="Point" type="Point" x="50" y="650">
+  <object id="106" name="Point" type="Point" x="48" y="656">
    <properties>
     <property name="angle" type="int" value="90"/>
    </properties>
    <point/>
   </object>
-  <object id="107" name="Point" type="Point" x="480" y="140">
+  <object id="107" name="Point" type="Point" x="464" y="144">
    <properties>
     <property name="angle" type="int" value="90"/>
    </properties>
@@ -64,13 +123,13 @@
    </properties>
    <point/>
   </object>
-  <object id="109" name="Point" type="Point" x="40" y="390">
+  <object id="109" name="Point" type="Point" x="48" y="400">
    <properties>
     <property name="angle" type="int" value="0"/>
    </properties>
    <point/>
   </object>
-  <object id="110" name="Point" type="Point" x="650" y="390">
+  <object id="110" name="Point" type="Point" x="656" y="400">
    <properties>
     <property name="angle" type="int" value="180"/>
    </properties>

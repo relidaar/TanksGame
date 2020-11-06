@@ -1,64 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="70" height="70" tilewidth="10" tileheight="10" infinite="0" nextlayerid="7" nextobjectid="154">
- <imagelayer id="2" name="Background">
-  <image source="map02.jpg" width="700" height="703"/>
- </imagelayer>
- <objectgroup id="5" name="Positions" visible="0">
-  <object id="141" name="Point" type="Point" x="40" y="140">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="22" height="22" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="154">
+ <tileset firstgid="1" source="Tiles.tsx"/>
+ <layer id="8" name="Borders" width="22" height="22" locked="1">
+  <properties>
+   <property name="Type" value="Tiles"/>
+  </properties>
+  <data encoding="csv">
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,0,0,0,0,0,0,0,1,0,1,0,0,1,0,0,0,0,0,0,0,1,
+1,0,1,0,0,1,1,1,1,0,1,0,0,1,0,0,0,0,0,0,0,1,
+1,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,1,
+1,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,1,
+1,1,1,0,0,1,0,0,1,1,1,1,1,1,1,1,1,0,1,0,0,1,
+1,1,1,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,1,
+1,0,1,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,1,
+1,0,1,0,0,1,0,0,1,1,1,0,0,1,0,0,1,1,1,0,0,1,
+1,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,1,1,1,0,0,1,
+1,0,1,1,1,1,0,0,1,1,1,0,0,1,1,1,1,1,1,0,0,1,
+1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,
+1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,
+1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,
+1,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,1,1,0,0,1,0,0,1,0,1,0,0,1,0,0,1,1,1,1,0,1,
+1,1,1,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+</data>
+ </layer>
+ <layer id="7" name="Path" width="22" height="22" locked="1">
+  <properties>
+   <property name="Type" value="Tiles"/>
+  </properties>
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,2,2,2,2,2,2,2,0,2,0,2,2,0,2,2,2,2,2,2,2,0,
+0,2,0,2,2,0,0,0,0,2,0,2,2,0,2,2,2,2,2,2,2,0,
+0,2,0,2,2,0,2,2,2,2,2,2,2,2,2,2,0,2,0,2,2,0,
+0,2,0,2,2,0,2,2,2,2,2,2,2,2,2,2,0,2,0,2,2,0,
+0,0,0,2,2,0,2,2,0,0,0,0,0,0,0,0,0,2,0,2,2,0,
+0,0,0,2,2,0,2,2,2,2,0,2,2,2,2,2,2,2,0,2,2,0,
+0,2,0,2,2,0,2,2,2,2,0,2,2,2,2,2,2,2,0,2,2,0,
+0,2,0,2,2,0,2,2,0,0,0,2,2,0,2,2,0,0,0,2,2,0,
+0,2,2,2,2,2,2,2,2,2,0,2,2,0,2,2,0,0,0,2,2,0,
+0,2,0,0,0,0,2,2,0,0,0,2,2,0,0,0,0,0,0,2,2,0,
+0,2,2,2,2,0,2,2,2,2,2,2,2,2,2,2,2,2,0,2,2,0,
+0,2,2,2,2,0,2,2,2,2,2,2,2,2,2,2,2,2,0,2,2,0,
+0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,2,2,0,
+0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,
+0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,
+0,2,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,
+0,2,0,2,2,0,2,2,0,2,2,2,2,2,2,2,2,2,2,2,2,0,
+0,2,0,2,2,0,2,2,0,2,2,2,2,2,2,2,2,2,2,2,2,0,
+0,0,0,2,2,0,2,2,0,2,0,2,2,0,2,2,0,0,0,0,2,0,
+0,0,0,2,2,2,2,2,2,2,0,2,2,0,2,2,2,2,2,2,2,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="5" name="Positions" locked="1">
+  <properties>
+   <property name="Type" value="Objects"/>
+  </properties>
+  <object id="141" name="Point" type="Point" x="48" y="144">
    <properties>
     <property name="angle" type="int" value="90"/>
    </properties>
    <point/>
   </object>
-  <object id="142" name="Point" type="Point" x="480" y="140">
+  <object id="142" name="Point" type="Point" x="496" y="144">
    <properties>
     <property name="angle" type="int" value="90"/>
    </properties>
    <point/>
   </object>
-  <object id="143" name="Point" type="Point" x="50" y="570">
+  <object id="143" name="Point" type="Point" x="48" y="560">
    <properties>
     <property name="angle" type="int" value="90"/>
    </properties>
    <point/>
   </object>
-  <object id="144" name="Point" type="Point" x="390" y="650">
+  <object id="144" name="Point" type="Point" x="368" y="656">
    <properties>
     <property name="angle" type="int" value="90"/>
    </properties>
    <point/>
   </object>
-  <object id="145" name="Point" type="Point" x="480" y="300">
+  <object id="145" name="Point" type="Point" x="464" y="304">
    <properties>
     <property name="angle" type="int" value="90"/>
    </properties>
    <point/>
   </object>
-  <object id="146" name="Point" type="Point" x="130" y="570">
+  <object id="146" name="Point" type="Point" x="112" y="560">
    <properties>
     <property name="angle" type="int" value="270"/>
    </properties>
    <point/>
   </object>
-  <object id="147" name="Point" type="Point" x="300" y="60">
+  <object id="147" name="Point" type="Point" x="304" y="48">
    <properties>
     <property name="angle" type="int" value="270"/>
    </properties>
    <point/>
   </object>
-  <object id="148" name="Point" type="Point" x="650" y="50">
+  <object id="148" name="Point" type="Point" x="656" y="48">
    <properties>
     <property name="angle" type="int" value="270"/>
    </properties>
    <point/>
   </object>
-  <object id="149" name="Point" type="Point" x="300" y="310">
+  <object id="149" name="Point" type="Point" x="304" y="304">
    <properties>
     <property name="angle" type="int" value="180"/>
    </properties>
    <point/>
   </object>
-  <object id="150" name="Point" type="Point" x="130" y="390">
+  <object id="150" name="Point" type="Point" x="144" y="368">
    <properties>
     <property name="angle" type="int" value="180"/>
    </properties>
@@ -70,13 +129,13 @@
    </properties>
    <point/>
   </object>
-  <object id="152" name="Point" type="Point" x="650" y="480">
+  <object id="152" name="Point" type="Point" x="656" y="496">
    <properties>
     <property name="angle" type="int" value="180"/>
    </properties>
    <point/>
   </object>
-  <object id="153" name="Point" type="Point" x="650" y="650">
+  <object id="153" name="Point" type="Point" x="656" y="656">
    <properties>
     <property name="angle" type="int" value="180"/>
    </properties>
