@@ -1,256 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="35" height="35" tilewidth="20" tileheight="20" infinite="0" nextlayerid="6" nextobjectid="153">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="70" height="70" tilewidth="10" tileheight="10" infinite="0" nextlayerid="7" nextobjectid="203">
  <imagelayer id="2" name="Background">
   <image source="map01.jpg" width="700" height="703"/>
  </imagelayer>
- <objectgroup id="4" name="Points" visible="0">
-  <object id="22" name="Point" x="21.5" y="24" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="23" name="Point" x="104.5" y="24" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="24" name="Point" x="191.5" y="24" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="26" name="Point" x="105.5" y="198" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="27" name="Point" x="20.5" y="195" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="28" name="Point" x="103.5" y="279" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="29" name="Point" x="24.5" y="285" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="30" name="Point" x="17.5" y="369" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="31" name="Point" x="104.5" y="372" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="32" name="Point" x="103.5" y="453" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="33" name="Point" x="24.5" y="453" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="34" name="Point" x="18.5" y="541" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="35" name="Point" x="622.5" y="454" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="36" name="Point" x="456.5" y="460" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="37" name="Point" x="547.5" y="457" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="38" name="Point" x="278.5" y="456" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="39" name="Point" x="450.5" y="629" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="40" name="Point" x="629.5" y="635" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="41" name="Point" x="627.5" y="549" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="42" name="Point" x="548.5" y="545" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="43" name="Point" x="196.5" y="282" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="44" name="Point" x="195.5" y="195" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="45" name="Point" x="279.5" y="195" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="46" name="Point" x="365.5" y="628" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="47" name="Point" x="363.5" y="548" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="48" name="Point" x="450.5" y="544" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="49" name="Point" x="277.5" y="546" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="50" name="Point" x="276.5" y="629" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="51" name="Point" x="193.5" y="628" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="52" name="Point" x="191.5" y="550" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="53" name="Point" x="110.5" y="547" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="54" name="Point" x="108.5" y="630" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="55" name="Point" x="22.5" y="633" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="56" name="Point" x="282.5" y="372" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="57" name="Point" x="190.5" y="372" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="58" name="Point" x="537.5" y="371" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="59" name="Point" x="372.5" y="369" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="60" name="Point" x="368.5" y="283" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="61" name="Point" x="370.5" y="201" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="62" name="Point" x="450.5" y="199" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="63" name="Point" x="539.5" y="198" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="64" name="Point" x="539.5" y="23" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="65" name="Point" x="452.5" y="24" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="66" name="Point" x="452.5" y="114" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="67" name="Point" x="366.5" y="113" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="68" name="Point" x="364.5" y="27" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="69" name="Point" x="283.5" y="110" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="70" name="Point" x="281.5" y="30" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="71" name="Point" x="626.5" y="29" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="72" name="Point" x="623.5" y="285" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="73" name="Point" x="453.5" y="284" width="51" height="48">
-   <ellipse/>
-  </object>
-  <object id="100" name="Point" x="21.5" y="106" width="51" height="48">
-   <ellipse/>
-  </object>
- </objectgroup>
- <objectgroup id="5" name="Positions">
-  <object id="105" name="Position" x="20.5" y="195" width="51" height="48">
-   <properties>
-    <property name="angle" type="int" value="0"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="108" name="Position" x="17.5" y="369" width="51" height="48">
-   <properties>
-    <property name="angle" type="int" value="0"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="112" name="Position" x="18.5" y="541" width="51" height="48">
+ <objectgroup id="5" name="Positions" visible="0">
+  <object id="187" name="Point" type="Point" x="40" y="130">
    <properties>
     <property name="angle" type="int" value="90"/>
    </properties>
-   <ellipse/>
+   <point/>
   </object>
-  <object id="113" name="Position" x="622.5" y="454" width="51" height="48">
-   <properties>
-    <property name="angle" type="int" value="180"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="118" name="Position" x="629.5" y="635" width="51" height="48">
-   <properties>
-    <property name="angle" type="int" value="180"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="121" name="Position" x="189.5" y="283" width="51" height="48">
+  <object id="188" name="Point" type="Point" x="40" y="220">
    <properties>
     <property name="angle" type="int" value="0"/>
    </properties>
-   <ellipse/>
+   <point/>
   </object>
-  <object id="123" name="Position" x="279.5" y="195" width="51" height="48">
+  <object id="189" name="Point" type="Point" x="300" y="220">
    <properties>
     <property name="angle" type="int" value="180"/>
    </properties>
-   <ellipse/>
+   <point/>
   </object>
-  <object id="124" name="Position" x="365.5" y="628" width="51" height="48">
-   <properties>
-    <property name="angle" type="int" value="90"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="133" name="Position" x="22.5" y="633" width="51" height="48">
-   <properties>
-    <property name="angle" type="int" value="0"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="135" name="Position" x="190.5" y="372" width="51" height="48">
-   <properties>
-    <property name="angle" type="int" value="0"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="136" name="Position" x="537.5" y="371" width="51" height="48">
-   <properties>
-    <property name="angle" type="int" value="180"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="141" name="Position" x="539.5" y="198" width="51" height="48">
-   <properties>
-    <property name="angle" type="int" value="180"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="148" name="Position" x="281.5" y="30" width="51" height="48">
+  <object id="190" name="Point" type="Point" x="300" y="60">
    <properties>
     <property name="angle" type="int" value="270"/>
    </properties>
-   <ellipse/>
+   <point/>
   </object>
-  <object id="149" name="Position" x="626.5" y="29" width="51" height="48">
+  <object id="191" name="Point" type="Point" x="660" y="60">
    <properties>
     <property name="angle" type="int" value="270"/>
    </properties>
-   <ellipse/>
+   <point/>
   </object>
-  <object id="152" name="Position" x="21.5" y="106" width="51" height="48">
+  <object id="192" name="Point" type="Point" x="560" y="220">
+   <properties>
+    <property name="angle" type="int" value="180"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="193" name="Point" type="Point" x="560" y="400">
+   <properties>
+    <property name="angle" type="int" value="180"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="194" name="Point" type="Point" x="217.629" y="402.655">
+   <properties>
+    <property name="angle" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="196" name="Point" type="Point" x="220" y="300">
+   <properties>
+    <property name="angle" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="197" name="Point" type="Point" x="39.1244" y="398.579">
+   <properties>
+    <property name="angle" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="198" name="Point" type="Point" x="39.1244" y="559.967">
    <properties>
     <property name="angle" type="int" value="90"/>
    </properties>
-   <ellipse/>
+   <point/>
+  </object>
+  <object id="199" name="Point" type="Point" x="38.3093" y="657.778">
+   <properties>
+    <property name="angle" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="200" name="Point" type="Point" x="390" y="660">
+   <properties>
+    <property name="angle" type="int" value="90"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="201" name="Point" type="Point" x="660" y="660">
+   <properties>
+    <property name="angle" type="int" value="180"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="202" name="Point" type="Point" x="660" y="480">
+   <properties>
+    <property name="angle" type="int" value="180"/>
+   </properties>
+   <point/>
   </object>
  </objectgroup>
 </map>

@@ -35,7 +35,7 @@ class Game:
     def get_starting_positions(self, number):
         positions = []
         points = self.map.get_layer_by_name('Positions')
-        map_positions = [(point.x + point.width / 2, point.y + point.height / 2, point.angle) for point in points]
+        map_positions = [(point.x, point.y, point.angle) for point in points]
         for _ in range(number):
             el = random.choice(map_positions)
             positions.append(el)
