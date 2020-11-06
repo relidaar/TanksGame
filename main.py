@@ -109,7 +109,11 @@ class Game:
                 shell.draw(self.screen)
         self.draw_text('Enemies left: ' + str(self.enemies_left), WHITE, 30, (140, 40))
 
-        if self.game_state != GameState.GAME_ON:
+        if self.game_state == GameState.GAME_ON:
+            reload_time = self.player.get_reload_time()
+            if reload_time != 0:
+                self.draw_text('Reloading: {:.1f}'.format(reload_time), WHITE, 30, (WIDTH - 140, 40))
+        else:
             self.draw_text(self.game_state.name, WHITE, 30, (WIDTH - 90, 40))
 
         pygame.display.update()

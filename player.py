@@ -1,7 +1,7 @@
 import keyboard
 import pygame
 
-from game_settings import IMG_TANK2, PLAYER_MOVEMENT_SPEED, PLAYER_ROTATION_SPEED, TANK_CONTROLS
+from game_settings import IMG_TANK2, PLAYER_MOVEMENT_SPEED, PLAYER_ROTATION_SPEED, TANK_CONTROLS, RELOAD_TIME
 from tank import Tank
 
 
@@ -25,3 +25,8 @@ class Player(Tank):
         if event.type == pygame.KEYDOWN:
             if event.key == self.controls.shoot and self.alive:
                 self.shoot()
+
+    def get_reload_time(self):
+        import time
+        delta = time.time() - self.last_reload
+        return RELOAD_TIME - delta if 0 <= delta <= RELOAD_TIME else 0.0
