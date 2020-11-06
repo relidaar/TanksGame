@@ -32,7 +32,7 @@ class Tank:
         self.death = None
         self.alive = True
 
-    def rotate(self, degree):
+    def _rotate(self, degree):
         if not self.alive: return
         self.angle += degree
         self.angle %= 360
@@ -68,7 +68,7 @@ class Tank:
                        (self.rect.center[0] + values[4], self.rect.center[1] - values[1]),
                        (self.rect.center[0] + values[3], self.rect.center[1] - values[2])]}
 
-    def move(self, value):
+    def _move(self, value):
         if not self.alive: return
         self._calculate_points()
 

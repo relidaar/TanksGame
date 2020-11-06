@@ -13,13 +13,13 @@ class Player(Tank):
     def move_control(self):
         if self.alive:
             if keyboard.is_pressed(self.controls.rotate_left):
-                self.rotate(self.rotation_speed)
+                self._rotate(self.rotation_speed)
             if keyboard.is_pressed(self.controls.rotate_right):
-                self.rotate(-self.rotation_speed)
+                self._rotate(-self.rotation_speed)
             if keyboard.is_pressed(self.controls.move_forward):
-                self.move(self.movement_speed)
+                self._move(self.movement_speed)
             if keyboard.is_pressed(self.controls.move_backward):
-                self.move(-self.movement_speed)
+                self._move(-self.movement_speed)
 
     def shoot_control(self, event):
         if event.type == pygame.KEYDOWN:
