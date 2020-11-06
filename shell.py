@@ -4,7 +4,7 @@ import time
 import pygame
 from pygame import Surface
 
-from helpers import calculate_distance, to_radians
+from helpers import distance, to_radians
 from game_settings import SHELL_RADIUS, TANK_RADIUS, BLACK
 from tank import Tank
 
@@ -39,5 +39,5 @@ class Shell:
 
     def collides(self, tank: Tank) -> bool:
         passing_time = time.time() - self.time
-        distance = calculate_distance(tank.get_location(), self.get_location())
-        return tank.alive and passing_time > 0.3 and distance <= SHELL_RADIUS + TANK_RADIUS
+        dist = distance(tank.get_location(), self.get_location())
+        return tank.alive and passing_time > 0.1 and dist <= SHELL_RADIUS + TANK_RADIUS

@@ -1,11 +1,7 @@
 import math
 from math import sqrt
 
-from game_settings import HEIGHT, WIDTH
-
-
-def check_wall_collision(point, game_map) -> bool:
-    return 85 > game_map.get_at(point)[0] > 70
+from game_settings import HEIGHT, WIDTH, TILE_SIZE
 
 
 def to_radians(value):
@@ -16,12 +12,20 @@ def to_degrees(value):
     return value * (180 / math.pi)
 
 
-def calculate_distance(pos1, pos2):
-    return sqrt(abs(pos1[0] - pos2[0]) ** 2 + abs(pos1[1] - pos2[1]) ** 2)
+def distance(point1, point2):
+    return sqrt(abs(point1[0] - point2[0]) ** 2 + abs(point1[1] - point2[1]) ** 2)
+
+
+def on_line(point, start, end) -> bool:
+    return distance(start, point) + distance(end, point) == distance(start, end)
 
 
 def inside_circle(point, center, radius) -> bool:
-    return calculate_distance(point, center) < radius
+    return distance(point, center) < radius
+
+
+def inside_square(point, x, y, width, height):
+    return x < point[0] < x + width and y < point[1] < y + height
 
 
 def get_angle(point, center):
@@ -39,3 +43,11 @@ def inside_sector(point, center, radius, starting, ending) -> bool:
     first_case = starting < ending and starting < angle < ending
     second_case = starting > ending and (angle > starting or angle < ending)
     return inside_circle(point, center, radius) and (first_case or second_case)
+
+
+def check_wall_collision(point, game_map) -> bool:
+    for x, y, tile in game_map.get_layer_by_name('Borders').tiles():
+        cx, cy = x * TILE_SIZE, y * TILE_SIZE
+        if inside_square(point, cx, cy, TILE_SIZE, TILE_SIZE):
+            return True
+    return False
