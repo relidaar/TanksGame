@@ -38,10 +38,13 @@ class Game:
     def get_starting_positions(self, number):
         positions = []
         tiles = list(self.tiles.values())
+        angles = [0, 90, 180, 270]
         for _ in range(number + 1):
             tile = random.choice(tiles)
-            if tile not in positions:
-                positions.append(tile)
+            tiles.remove(tile)
+            tile = Tile(tile.get_pos(), tile.get_indices())
+            tile.angle = random.choice(angles)
+            positions.append(tile)
         return positions
 
     def set_map(self):
