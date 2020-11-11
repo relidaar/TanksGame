@@ -6,24 +6,24 @@ from pygame import Surface
 
 import helpers
 from game_settings import SHELL_COUNT, SHELL_LIFE, EXPLOSION_TIME, IMG_EXPLOSION, RELOAD_TIME, TANK_RADIUS
+from tile import Tile
 
 
 class Tank:
-    def __init__(self, game_map, tank_image: Surface, x, y, movement_speed, rotation_speed, angle=0):
+    def __init__(self, game_map, tank_image: Surface, starting_tile: Tile, movement_speed, rotation_speed):
         self.game_map = game_map
+        self.x = starting_tile.x
+        self.y = starting_tile.y
+        self.angle = starting_tile.angle
 
         self.size = TANK_RADIUS * 2 + 10
         self.original_image = pygame.transform.rotate(pygame.transform.scale(tank_image, (self.size, self.size)), 180)
-        self.image = pygame.transform.rotate(self.original_image, angle % 360)
+        self.image = pygame.transform.rotate(self.original_image, self.angle % 360)
         self.rect = self.image.get_rect()
-
-        self.x = x
-        self.y = y
         self.rect.center = self.get_location()
 
         self.movement_speed = movement_speed
         self.rotation_speed = rotation_speed
-        self.angle = angle
 
         self.points = {}
         self.shells = []

@@ -8,6 +8,7 @@ from enemy import Enemy
 from game_settings import *
 from helpers import check_wall_collision
 from player import Player
+from tile import Tile
 
 
 class GameState(Enum):
@@ -31,17 +32,16 @@ class Game:
         self.tanks = []
         self.map = None
         self.tiles = dict()
-        self.coords = dict()
 
         self.game_state = GameState.GAME_ON
 
     def get_starting_positions(self, number):
         positions = []
-        points = list(self.tiles.values())
+        tiles = list(self.tiles.values())
         for _ in range(number + 1):
-            el = random.choice(points)
-            if el not in positions:
-                positions.append(el)
+            tile = random.choice(tiles)
+            if tile not in positions:
+                positions.append(tile)
         return positions
 
     def set_map(self):
@@ -77,7 +77,6 @@ class Game:
             shells += tank.shells
 
         for enemy in self.enemies:
-            enemy.rotate()
             enemy.move()
             if enemy.in_sight(self.player):
                 enemy.shoot()
@@ -133,16 +132,13 @@ class Game:
     def run(self):
         self.set_map()
         self.tiles = dict()
-        self.coords = dict()
         for row, col, _ in self.map.get_layer_by_name('Path').tiles():
             pos = (row * TILE_SIZE + TILE_SIZE / 2, col * TILE_SIZE + TILE_SIZE / 2)
-            self.tiles[(row, col)] = pos
-            self.coords[pos] = (row, col)
+            self.tiles[(row, col)] = Tile(pos, (row, col))
 
         positions = self.get_starting_positions(NUMBER_OF_ENEMIES + 1)
-        self.player = Player(self.map, positions[0][0], positions[0][1])
-        self.enemies = [Enemy(self.map, self.tiles, self.coords, positions[i][0], positions[i][1])
-                        for i in range(1, NUMBER_OF_ENEMIES + 1)]
+        self.player = Player(self.map, positions[0])
+        self.enemies = [Enemy(self.map, self.tiles, positions[i]) for i in range(1, NUMBER_OF_ENEMIES + 1)]
 
         self.tanks = [self.player]
         self.tanks.extend(self.enemies)
