@@ -18,7 +18,7 @@ class Controls:
 
 TANK_CONTROLS = Controls('w', 's', 'a', 'd', pygame.K_SPACE)
 
-TILE_SIZE = 32
+TILE_SIZE = 24
 TILES_X = 22
 TILES_Y = 24
 NUMBER_OF_MAPS = 3
